@@ -4,7 +4,7 @@
   "description": "A thin wrapper around Http that lets  track progress of http request in Angular 2",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p src ",
+    "build": "rimraf build/* && tsc -p src && node scripts/transformPackageJson.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -30,6 +30,7 @@
     "@angular/core": "^2.3.1",
     "@angular/http": "^2.3.1",
     "@angular/platform-browser": "^2.3.1",
+    "rimraf": "^2.5.4",
     "rxjs": "^5.0.1",
     "typescript": "^2.1.4",
     "zone.js": "^0.7.2"
