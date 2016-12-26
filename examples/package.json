@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "An example application that demonstrates angular-progress-http library",
   "scripts": {
-    "start": "webpack"
+    "start": "webpack && node server.js"
   },
   "dependencies": {
     "@angular/common": "^2.3.1",
@@ -15,6 +15,8 @@
     "@angular/platform-browser-dynamic": "^2.4.1",
     "angular-progress-http": "file:../build",
     "core-js": "^2.4.1",
+    "express": "^4.14.0",
+    "multer": "^1.2.1",
     "rxjs": "^5.0.1",
     "zone.js": "^0.7.2"
   },
