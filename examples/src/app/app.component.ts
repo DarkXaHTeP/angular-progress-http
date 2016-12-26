@@ -1,7 +1,7 @@
 "use strict";
 
 import {Component} from "@angular/core";
-import { Http } from "@angular/http";
+import { ProgressHttp } from "angular-progress-http";
 
 interface FileDescriptor {
     name: string;
@@ -32,7 +32,7 @@ export class AppComponent {
     public name:string = "John";
     public files: FileDescriptor[] = [];
 
-    constructor(private http: Http) {
+    constructor(private http: ProgressHttp) {
     }
 
     public onFilesSelected(fileList: FileList) {
@@ -48,7 +48,9 @@ export class AppComponent {
             let form = new FormData();
             form.append("file", f.file);
 
-            this.http.post("/fileUpload", form)
+            this.http
+                .withProgressListener(e => console.log(f.name, e))
+                .post("/fileUpload", form)
                 .subscribe((r) => {
                     f.uploaded = true;
                 })
