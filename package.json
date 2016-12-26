@@ -20,14 +20,15 @@
   "license": "MIT",
   "repository": "DarkXaHTeP/angular-progress-http",
   "peerDependencies": {
+    "@angular/core": "^2.3.1",
     "@angular/http": "^2.3.1"
   },
   "dependencies": {
-    "tslib": "^1.4.0"
+    "ts-helpers": "^1.1.2"
   },
   "devDependencies": {
-    "@angular/common": "^2.3.1",
     "@angular/core": "^2.3.1",
+    "@angular/common": "^2.3.1",
     "@angular/http": "^2.3.1",
     "@angular/platform-browser": "^2.3.1",
     "rimraf": "^2.5.4",
