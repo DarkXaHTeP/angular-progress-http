@@ -1,0 +1,37 @@
+{
+  "name": "angular-progress-http",
+  "version": "0.0.1",
+  "description": "A thin wrapper around Http that lets  track progress of http request in Angular 2",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p src ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng2",
+    "http",
+    "progress",
+    "xhr",
+    "upload"
+  ],
+  "author": "DarkXaHTeP <darkxahtep@gmail.com>",
+  "license": "MIT",
+  "repository": "DarkXaHTeP/angular-progress-http",
+  "peerDependencies": {
+    "@angular/http": "^2.3.1"
+  },
+  "dependencies": {
+    "tslib": "^1.4.0"
+  },
+  "devDependencies": {
+    "@angular/common": "^2.3.1",
+    "@angular/core": "^2.3.1",
+    "@angular/http": "^2.3.1",
+    "@angular/platform-browser": "^2.3.1",
+    "rxjs": "^5.0.1",
+    "typescript": "^2.1.4",
+    "zone.js": "^0.7.2"
+  }
+}
