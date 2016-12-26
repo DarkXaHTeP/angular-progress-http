@@ -11,6 +11,9 @@
     "declaration": true,
     "noImplicitAny": true,
     "noEmitHelpers": true,
-    "importHelpers": true
+    "lib": [
+      "ES2015",
+      "DOM"
+    ]
   }
 }

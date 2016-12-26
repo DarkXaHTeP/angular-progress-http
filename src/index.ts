@@ -1,4 +1,6 @@
-import { Greeter } from "./Greeter";
+"use strict";
 
-const greeter = new Greeter();
-greeter.Hello("Vasia");
+import "ts-helpers";
+
+export { ProgressHttpModule } from "./lib/progress-http.module";
+export { ProgressHttp } from "./lib/progress-http.service";
