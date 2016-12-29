@@ -1,5 +1,3 @@
-"use strict";
-
 import {BrowserXhr} from "@angular/http";
 
 export class ProgressBrowserXhr extends BrowserXhr {

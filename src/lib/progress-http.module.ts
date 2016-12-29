@@ -1,5 +1,3 @@
-"use strict";
-
 import {NgModule} from '@angular/core';
 import { RequestOptions, ResponseOptions, XHRBackend, XSRFStrategy } from "@angular/http";
 
