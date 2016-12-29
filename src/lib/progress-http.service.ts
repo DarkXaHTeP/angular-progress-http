@@ -2,12 +2,12 @@ import { Injectable } from "@angular/core";
 import { Http, ConnectionBackend, RequestOptions, ResponseOptions, XHRBackend, XSRFStrategy } from "@angular/http";
 
 import { ProgressBrowserXhr } from "./ProgressBrowserXhr";
-import { HttpWithDownloadProgressListener, HttpWithUploadProgressListener} from "./interfaces";
+import { HttpWithDownloadProgressListener, HttpWithUploadProgressListener, Progress } from "./interfaces";
 
 @Injectable()
 export class ProgressHttp extends Http implements HttpWithUploadProgressListener, HttpWithDownloadProgressListener {
-    private _uploadCallback: (event: ProgressEvent) => void = null;
-    private _downloadCallback: (event: ProgressEvent) => void = null;
+    private _uploadCallback: (progress: Progress) => void = null;
+    private _downloadCallback: (progress: Progress) => void = null;
 
     public constructor(
         backend: ConnectionBackend,
@@ -19,7 +19,7 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
     }
 
     public withDownloadProgressListener(
-        listener: (event: ProgressEvent) => void
+        listener: (progress: Progress) => void
     ): HttpWithDownloadProgressListener {
         this._downloadCallback = listener;
 
@@ -27,7 +27,7 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
     }
 
     public withUploadProgressListener(
-        listener: (event: ProgressEvent) => void
+        listener: (progress: Progress) => void
     ): HttpWithUploadProgressListener {
         this._uploadCallback = listener;
 
