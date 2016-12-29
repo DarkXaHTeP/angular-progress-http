@@ -1,6 +1,7 @@
 "use strict";
 
 module.exports = {
+    devtool: "sourcemap",
     context: __dirname + "/src",
     entry: {
         bundle: "./main.ts"

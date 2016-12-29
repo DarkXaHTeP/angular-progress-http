@@ -1,7 +1,6 @@
 {
   "name": "angular-progress-http-examples",
   "private": true,
-  "version": "0.0.1",
   "description": "An example application that demonstrates angular-progress-http library",
   "scripts": {
     "start": "webpack && node server.js"
