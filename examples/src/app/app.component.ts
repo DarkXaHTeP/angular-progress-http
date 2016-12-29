@@ -5,6 +5,7 @@ interface FileDescriptor {
     name: string;
     file: File;
     uploaded: boolean;
+    percentage?: number;
 }
 
 @Component({
@@ -17,17 +18,20 @@ interface FileDescriptor {
         `
     ],
     template: `
-        <div>
-            Hello {{name}}
-        </div>
         <input type="file" multiple (change)="onFilesSelected($event.target.files)"/>
         <br/>
-        <div *ngFor="let fileD of files" [class.uploaded]="fileD.uploaded">{{fileD.name}}</div>
+        <br/>
+        <div *ngFor="let fileD of files" [class.uploaded]="fileD.uploaded">
+            <div>{{fileD.name}}</div>
+            <div *ngIf="fileD.percentage !== null">
+                <div>Uploaded: {{fileD.percentage}}%</div>
+                <div><progress [value]="fileD.percentage" max="100"></progress></div>                
+            </div>
+        </div>
         <br/>
         <button type="button" (click)="upload()">Upload</button>
 `})
 export class AppComponent {
-    public name:string = "John";
     public files: FileDescriptor[] = [];
 
     constructor(private http: ProgressHttp) {
@@ -37,7 +41,8 @@ export class AppComponent {
         this.files = Array.from(fileList).map((f: File): FileDescriptor => ({
             name: f.name,
             file: f,
-            uploaded: false
+            uploaded: false,
+            percentage: null
         }))
     }
 
@@ -47,7 +52,7 @@ export class AppComponent {
             form.append("file", f.file);
 
             this.http
-                .withUploadProgressListener(e => console.log(f.name, e))
+                .withUploadProgressListener(e => { f.percentage = e.percentage; })
                 .post("/fileUpload", form)
                 .subscribe((r) => {
                     f.uploaded = true;
