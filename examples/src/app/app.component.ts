@@ -1,5 +1,3 @@
-"use strict";
-
 import {Component} from "@angular/core";
 import { ProgressHttp } from "angular-progress-http";
 
@@ -49,7 +47,7 @@ export class AppComponent {
             form.append("file", f.file);
 
             this.http
-                .withProgressListener(e => console.log(f.name, e))
+                .withUploadProgressListener(e => console.log(f.name, e))
                 .post("/fileUpload", form)
                 .subscribe((r) => {
                     f.uploaded = true;
