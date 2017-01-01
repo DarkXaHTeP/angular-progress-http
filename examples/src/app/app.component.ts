@@ -34,7 +34,7 @@ interface FileDescriptor {
 export class AppComponent {
     public files: FileDescriptor[] = [];
 
-    constructor(private http: ProgressHttp) {
+    constructor(private progressHttp: ProgressHttp) {
     }
 
     public onFilesSelected(fileList: FileList) {
@@ -51,8 +51,8 @@ export class AppComponent {
             let form = new FormData();
             form.append("file", f.file);
 
-            this.http
-                .withUploadProgressListener(e => { f.percentage = e.percentage; })
+            this.progressHttp
+                .withUploadProgressListener(progress => { f.percentage = progress.percentage; })
                 .post("/fileUpload", form)
                 .subscribe((r) => {
                     f.uploaded = true;

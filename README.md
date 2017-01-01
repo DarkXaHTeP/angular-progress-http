@@ -7,7 +7,7 @@ A thin wrapper around Angular 2+ Http service that adds ability to work with upl
 [![NPM Downloads][downloads-image]][npm-url]
 
 ## Usage
-Include HttpModule and ProgressHttpModule
+Import HttpModule and ProgressHttpModule
 ``` ts
 import { NgModule } from "@angular/core";
 import { HttpModule } from "@angular/http";
@@ -21,7 +21,8 @@ import { ProgressHttpModule } from "angular-progress-http";
 })
 export class AppModule {}
 ```
-Inject ProgressHttp into your component and you are ready to go. See [API description below](#api-description) for available methods.
+Inject ProgressHttp into your component and you are ready to go.
+See [API description below](#api-description) for available methods.
 ``` ts
 import {Component} from "@angular/core";
 import { ProgressHttp } from "angular-progress-http";
@@ -57,12 +58,68 @@ v0.2.0
 
 ## API description
 
-TBD
+ProgressHttp service extends Http service provided by Angular/Http which means that you get all of the Http methods including
+``` ts
+request(url: string | Request, options?: RequestOptionsArgs): Observable<Response>;
+get(url: string, options?: RequestOptionsArgs): Observable<Response>;
+post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response>;
+```
+and others.
+
+In addition it provides two methods for handling progress:
+``` ts
+withDownloadProgressListener(listener: (progress: Progress) => void): HttpWithDownloadProgressListener;
+withUploadProgressListener(listener: (progress: Progress) => void): HttpWithUploadProgressListener;
+```
+They both take callback as argument and return new instances of the service.
+
+The interfaces returned from methods are described below:
+``` ts
+interface HttpWithDownloadProgressListener extends Http {
+    withUploadProgressListener(listener: (progress: Progress) => void): Http;
+}
+
+interface HttpWithUploadProgressListener extends Http {
+    withDownloadProgressListener(listener: (progress: Progress) => void): Http;
+}
+```
+Their purpose is to make libary easier to use and add compile-time checks for method calls
+``` ts
+progressHttp //can use http api or call withUploadProgressListener or withDownloadProgressListener
+    .withUploadProgressListener(progress => {}) //can use http api or call withDownloadProgressListener
+    .withDownloadProgressListener(progress => {}) //here and on lines below can only use http api
+    .post("/fileUpload", form)
+    .subscribe((response) => {})
+```
+This restriction is used to make sure that there are now repeating calls to add progress listeners that will overwrite previously assigned handlers and may confuse developer
+
+Calls to both methods are immutable (return new instances and do not change the internal state of the service), so you may do next things
+``` ts
+let http1 = this.progressHttp.withUploadProgressListener(progress => { console.log("Uploading 1") });
+let http2 = this.progressHttp.withUploadProgressListener(progress => { console.log("Uploading 2") });
+let http3 = http1.withDownloadProgressListener(progress => { console.log("Downloading 1") });
+```
+In the code above http1 and http2 will have different upload listeners. http3 will have same upload listener as http1 and a download listener
+
+This behavior may be useful when uploading multiple files simultaneously e.g.
+``` ts
+this.files.forEach(f => {
+    const form = new FormData();
+    form.append("file", f.file);
+
+    this.progressHttp
+        .withUploadProgressListener(progress => { f.percentage = progress.percentage; })
+        .post("/fileUpload", form)
+        .subscribe((r) => {
+            f.uploaded = true;
+        })
+});
+```
 
 ## Progress interface
-Both upload and download listeners accept single argument that implements Progress interface
+Both upload and download progress listeners accept single argument that implements Progress interface
 ``` ts
-export interface Progress {
+interface Progress {
     event: ProgressEvent, //event emitted by XHR
     lengthComputable: boolean, //if false percentage and total are undefined
     percentage?: number, //percentage of work finished
@@ -72,11 +129,35 @@ export interface Progress {
 ```
 
 ## How it works internally
-The library tries to rely on Angular code as much as possible instead of reimplementing the wheel.
+The library tries to rely on Angular code as much as possible instead of reinventing the wheel.
 
 It extends BrowserXhr class with logic that adds event listeners to XMLHttpRequest and executes progress listeners.
 Other parts that are responsible for http calls (Http, XhrConnection, XhrBackend) are used as is,
 which means that angular-progress-http will automatically receive fixes and new features from newer versions of angular/http
+
+## Building from sources
+1. Clone the repository to the local PC
+2. Run
+``` bash
+npm install
+npm run build
+```
+3. The built library can be found in "build" folder
+
+## Running tests
+Tests are WIP. The instruction will be added after adding tests.
+
+## Running examples
+1. Make sure that you built library from sources as described [above](#building-from-sources)
+2. Navigate to "examples" folder
+3. Run
+``` bash
+npm install
+npm start
+```
+4. Open browser on http://localhost:3000
+5. Choose some files (big size of the files will let you see the progress bar) and click upload
+6. Use throttling in Chrome dev tools to slow down network if progress jumps from 0 to 100 immediately
 
 ## Сontribution
 Feel free to ask questions and post bugs/ideas in the issues, as well as send pull requests.
