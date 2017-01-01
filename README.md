@@ -21,7 +21,7 @@ import { ProgressHttpModule } from "angular-progress-http";
 })
 export class AppModule {}
 ```
-Inject ProgressHttp into your component and make calls that are listed in the []API description below](#api-description).
+Inject ProgressHttp into your component and make calls that are listed in the [API description below](#api-description).
 ``` js
 import {Component} from "@angular/core";
 import { ProgressHttp } from "angular-progress-http";
