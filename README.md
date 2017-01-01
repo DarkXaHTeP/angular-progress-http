@@ -8,7 +8,7 @@ A thin wrapper around Angular 2+ Http service that adds ability to work with upl
 
 ## Usage
 Include HttpModule and ProgressHttpModule
-``` js
+``` ts
 import { NgModule } from "@angular/core";
 import { HttpModule } from "@angular/http";
 import { ProgressHttpModule } from "angular-progress-http";
@@ -21,8 +21,8 @@ import { ProgressHttpModule } from "angular-progress-http";
 })
 export class AppModule {}
 ```
-Inject ProgressHttp into your component and make calls that are listed in the [API description below](#api-description).
-``` js
+Inject ProgressHttp into your component and you are ready to go. See [API description below](#api-description) for available methods.
+``` ts
 import {Component} from "@angular/core";
 import { ProgressHttp } from "angular-progress-http";
 
@@ -60,17 +60,28 @@ v0.2.0
 TBD
 
 ## Progress interface
-
-TBD
+Both upload and download listeners accept single argument that implements Progress interface
+``` ts
+export interface Progress {
+    event: ProgressEvent, //event emitted by XHR
+    lengthComputable: boolean, //if false percentage and total are undefined
+    percentage?: number, //percentage of work finished
+    loaded: number, //amount of data loaded in bytes
+    total?: number // amount of data total in bytes
+}
+```
 
 ## How it works internally
+The library tries to rely on Angular code as much as possible instead of reimplementing the wheel.
 
-TBD
+It extends BrowserXhr class with logic that adds event listeners to XMLHttpRequest and executes progress listeners.
+Other parts that are responsible for http calls (Http, XhrConnection, XhrBackend) are used as is,
+which means that angular-progress-http will automatically receive fixes and new features from newer versions of angular/http
 
 ## Сontribution
 Feel free to ask questions and post bugs/ideas in the issues, as well as send pull requests.
 
-#### License: [MIT](LICENSE)
+### License: [MIT](LICENSE)
 
 [npm-image]: https://img.shields.io/npm/v/angular-progress-http.svg
 [npm-url]: https://npmjs.org/package/angular-progress-http
