@@ -6,9 +6,7 @@ install: npm --production=false install
 script:
   - npm run build
   - npm run build-examples
+before_deploy: "cd build && pwd"
 deploy:
-  provider: script
-  script: ./scripts/deploy.sh
+  provider: npm
   skip_cleanup: true
-  on:
-    tags: true
