@@ -11,7 +11,7 @@
     "outDir": "../build",
     "declaration": true,
     "noImplicitAny": true,
-    "noEmitHelpers": true,
+    "noEmitHelpers": false,
     "lib": [
       "ES2015",
       "DOM"
