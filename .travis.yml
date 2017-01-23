@@ -8,5 +8,6 @@ script:
   - npm run build-examples
 before_deploy: "cd build && pwd"
 deploy:
-  provider: npm
+  provider: script
+  script: pwd
   skip_cleanup: true
