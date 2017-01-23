@@ -149,11 +149,9 @@ Tests are WIP. The instruction will be added after adding tests.
 
 ## Running examples
 1. Make sure that you built library from sources as described [above](#building-from-sources)
-2. Navigate to "examples" folder
-3. Run
+2. Run
 ``` bash
-npm install
-npm start
+npm run examples
 ```
 4. Open browser on http://localhost:3000
 5. Choose some files (big size of the files will let you see the progress bar) and click upload
