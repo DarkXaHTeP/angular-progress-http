@@ -15,14 +15,16 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ["", ".js", ".ts"],
-        modules: ["node_modules"],
+        extensions: ["", ".js", ".ts"]
     },
     module: {
         loaders: [
             {
                 test: /\.ts$/,
-                loader: "awesome-typescript"
+                loader: "awesome-typescript",
+                query: {
+                    configFileName: `${__dirname}/tsconfig.json`
+                }
             }
         ]
     }

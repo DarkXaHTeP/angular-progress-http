@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import { ProgressHttp } from "angular-progress-http";
+import { ProgressHttp } from "../../../build";
 
 interface FileDescriptor {
     name: string;

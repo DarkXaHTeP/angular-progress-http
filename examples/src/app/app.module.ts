@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpModule } from "@angular/http";
-import { ProgressHttpModule } from "angular-progress-http";
+import { ProgressHttpModule } from "../../../build";
 
 import { AppComponent } from "./app.component";
 

@@ -9,7 +9,10 @@
     "clean": "rimraf build/*",
     "test": "echo \"Error: no test specified\" && exit 1",
     "transform-package": "node scripts/transformPackageJson.js",
-    "copy-readme-license": "copyfiles README.md LICENSE build"
+    "copy-readme-license": "copyfiles README.md LICENSE build",
+    "build-examples": "webpack --config=./examples/webpack.config",
+    "serve-examples": "node examples/server.js",
+    "examples": "npm run build-examples && npm run serve-examples"
   },
   "keywords": [
     "angular",
@@ -32,13 +35,20 @@
   },
   "devDependencies": {
     "@angular/common": "^2.3.1",
+    "@angular/compiler": "^2.4.4",
     "@angular/core": "^2.3.1",
     "@angular/http": "^2.3.1",
     "@angular/platform-browser": "^2.3.1",
+    "@angular/platform-browser-dynamic": "^2.4.4",
+    "awesome-typescript-loader": "^3.0.0-beta.18",
     "copyfiles": "^1.0.0",
+    "express": "^4.14.0",
+    "multer": "^1.2.1",
+    "reflect-metadata": "^0.1.9",
     "rimraf": "^2.5.4",
     "rxjs": "^5.0.1",
     "typescript": "^2.1.4",
+    "webpack": "^1.14.0",
     "zone.js": "^0.7.2"
   }
 }
