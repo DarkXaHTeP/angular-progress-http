@@ -45,6 +45,10 @@ export class AppComponent {
 ```
 
 ## Changelog
+v0.2.2
+
+* Added Travis CI for build and publishing to npm
+* Updated examples build
 
 v0.2.1
 
