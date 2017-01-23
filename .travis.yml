@@ -4,10 +4,14 @@ node_js:
 sudo: false
 install: npm --production=false install
 script:
-  - npm run build
-  - npm run build-examples
-before_deploy: "cd build && pwd"
+- npm run build
+- npm run build-examples
+before_deploy: cd build && pwd
 deploy:
-  provider: script
-  script: pwd
+  provider: npm
+  email: darkxahtep@gmail.com
   skip_cleanup: true
+  on:
+    tags: true
+  api_key:
+    secure: LtlNlb63uORXx2v31u9JUyC94uuIh7IzoMargMpeRnWu+EFeedAivkjXRIOj7dZ2eGW62w7wdoilEExzL2gOGVJZO6pJZYvKkqLzGHgVbkyyMGq0IhhotPecRvN9IzkwqlVrA3SVw0x7aEIvW3YXPDnRqLsn4qlAQH3ZkhjgpHBCkWI3/zmIY1++a/i9STDU+HmqKtH2HOSvfubnPx7BZUKKQKzxZ9yi+I8n9Y9ntcmv+ngA21hKNH8P7vZ6xkRnAfJ+Qps1bKudLwrM7IGLFC47+MiSZ/Z4wLPpFsRYK1NtL2mU/FghgvrK1G5gZzHrofIO3wA58t4FM2iL6WPPqWklAOVq8vJh8YeBxWDWxRH2YhnB8JWNvL4zZOONGerYZYSTr9w70Fp8jhIqFVrW+E7QY8XA6Mu5TUQX9x9Ml3v/xb0E3qs40udza++x0xH9WvqjLYK4xK7tD1V0NlvUFahxMEVGrKZvuYUHKq0miWnGLU3l3s6B7CcZlWZD8OXX2caVMm0ZPw1xykt7YJXHBErd7yZ4hGVZaW9XJD0RpMgbtYp44PSeIbqSO6SxEHoQBga/ZXT/qHzRZdgBeRhVAwd2u1NLyCJ/yUGbKyQA4ECK4LqKIUv7oT52atf8xvO/sktBW0m6aCrCMsD3H70qAJ6aqntjHcrXeWxFSwzIM1U=
