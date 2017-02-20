@@ -46,6 +46,8 @@ export class AppComponent {
     }
 }
 ```
+The library is distributed as a set of .ts files, which means that you may need an appropriate loader to compile TypeScript code into JavaScript.
+Angular CLI does this compilation automatically.
 
 ## Changelog
 v0.2.2
