@@ -50,6 +50,9 @@ The library is distributed as a set of .ts files, which means that you may need 
 Angular CLI does this compilation automatically.
 
 ## Changelog
+v0.3.0
+* Replaced .js files with .ts (resolves [#1](https://github.com/DarkXaHTeP/angular-progress-http/issues/1))
+
 v0.2.2
 
 * Added Travis CI for build and publishing to npm
