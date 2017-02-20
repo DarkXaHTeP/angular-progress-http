@@ -6,6 +6,9 @@ A thin wrapper around Angular 2+ Http service that adds ability to work with upl
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][npm-url]
 
+### build info
+[![Build Status](https://travis-ci.org/DarkXaHTeP/angular-progress-http.svg?branch=master)](https://travis-ci.org/DarkXaHTeP/angular-progress-http)
+
 ## Usage
 Import HttpModule and ProgressHttpModule
 ``` ts
