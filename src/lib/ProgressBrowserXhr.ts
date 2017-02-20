@@ -4,8 +4,8 @@ import { Progress } from "./interfaces";
 
 export class ProgressBrowserXhr extends BrowserXhr {
     private constructor(
-        private upload:(progress:Progress) => void = null,
-        private download:(progress:Progress) => void = null) {
+        private upload:any = null,
+        private download:any = null) {
         super();
     }
 

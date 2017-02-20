@@ -2,14 +2,14 @@
   "name": "angular-progress-http",
   "version": "0.2.2",
   "description": "A thin wrapper around Http that lets  track progress of http request in Angular 2",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "build": "npm run clean && npm run build-ts && npm run transform-package && npm run copy-readme-license",
-    "build-ts": "tsc -p src",
+    "build": "npm run clean && npm run transform-package && npm run copy-readme-license && npm run copy-ts",
     "clean": "rimraf build/*",
     "test": "echo \"Error: no test specified\" && exit 1",
     "transform-package": "node scripts/transformPackageJson.js",
     "copy-readme-license": "copyfiles README.md LICENSE build",
+    "copy-ts": "copyup 'src/**/*' build",
     "build-examples": "webpack --config=./examples/webpack.config",
     "serve-examples": "node examples/server.js",
     "examples": "npm run build-examples && npm run serve-examples"
