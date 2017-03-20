@@ -1,14 +1,16 @@
 "use strict";
 
+const path = require("path");
+
 module.exports = {
     devtool: "sourcemap",
-    context: __dirname + "/src",
+    context: path.join(__dirname, "src"),
     entry: {
         bundle: "./main.ts"
     },
 
     output: {
-        path: __dirname + "/build",
+        path: path.join(__dirname, "build"),
         publicPath: "",
         filename: "[name].js",
         chunkFilename: "[id].chunk.js"
@@ -23,7 +25,7 @@ module.exports = {
                 test: /\.ts$/,
                 loader: "awesome-typescript",
                 query: {
-                    configFileName: `${__dirname}/tsconfig.json`
+                    configFileName: path.join(__dirname, "tsconfig.json")
                 }
             }
         ]
