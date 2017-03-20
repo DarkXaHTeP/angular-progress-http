@@ -7,6 +7,7 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['jasmine'],
         files: [
+            'node_modules/core-js/client/core.js',
             'src/**/*.spec.ts',
             'test/*.ts'
         ],
@@ -19,7 +20,7 @@ module.exports = function (config) {
             module: webpackConfig.module,
             resolve: webpackConfig.resolve
         },
-        reporters: ['progress'],
+        reporters: ['dots'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
