@@ -2,15 +2,15 @@ import {BrowserXhr} from "@angular/http";
 
 import { Progress } from "./interfaces";
 
-export class ProgressBrowserXhr extends BrowserXhr {
-    private constructor(
+export class ProgressBrowserXhr implements BrowserXhr {
+    public constructor(
+        private browserXhr: BrowserXhr,
         private upload:any = null,
         private download:any = null) {
-        super();
     }
 
     public build():any {
-        const xhr = super.build();
+        const xhr = this.browserXhr.build();
 
         if(this.upload) {
             xhr.upload.addEventListener("progress", this.createProgressListener(this.upload));
@@ -31,18 +31,12 @@ export class ProgressBrowserXhr extends BrowserXhr {
                 loaded: event.loaded
             };
 
-            if(event.lengthComputable) {
+            if (event.lengthComputable) {
                 progress.total = event.total;
                 progress.percentage = Math.round((event.loaded * 100 / event.total));
             }
 
             listener(progress);
         }
-    }
-
-    public static create(
-        upload:(progress:Progress) => void,
-        download:(progress:Progress) => void) {
-        return new ProgressBrowserXhr(upload, download);
     }
 }
