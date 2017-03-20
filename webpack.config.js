@@ -1,5 +1,7 @@
 "use strict";
 
+const path = require("path");
+
 module.exports = {
     resolve: {
         extensions: ['.ts', '.js', '']
@@ -11,7 +13,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'awesome-typescript',
                 query: {
-                    configFileName: `${__dirname}/examples/tsconfig.json`
+                    configFileName: path.join(__dirname, "tsconfig.json")
                 }
             }
         ]

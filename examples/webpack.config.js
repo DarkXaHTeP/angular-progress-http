@@ -25,7 +25,7 @@ module.exports = {
                 test: /\.ts$/,
                 loader: "awesome-typescript",
                 query: {
-                    configFileName: path.join(__dirname, "tsconfig.json")
+                    configFileName: path.join(__dirname, "../tsconfig.json")
                 }
             }
         ]
