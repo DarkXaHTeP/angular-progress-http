@@ -1,4 +1,4 @@
-import {NgModule, Injector, InjectionToken } from '@angular/core';
+import {NgModule, Injector } from '@angular/core';
 import { RequestOptions, Http } from "@angular/http";
 
 import { ProgressBrowserXhrFactory } from "./ProgressBrowserXhrFactory";
