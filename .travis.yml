@@ -5,6 +5,7 @@ sudo: false
 install: npm --production=false install
 script:
 - npm run build
+- npm run test
 - npm run build-examples
 before_deploy: cd build && pwd
 deploy:
