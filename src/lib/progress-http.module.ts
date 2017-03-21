@@ -1,22 +1,31 @@
 import {NgModule, Injector } from '@angular/core';
-import { RequestOptions, Http } from "@angular/http";
+import { RequestOptions, Http, ResponseOptions, XSRFStrategy, XHRBackend } from "@angular/http";
 
 import { ProgressBrowserXhrFactory } from "./ProgressBrowserXhrFactory";
 import { ProgressHttp } from "./progress-http.service";
+import { HTTP_FACTORY } from "./http-factory.token";
+import { HttpFactory } from "./interfaces";
+import { DefaultHttpFactory } from "./DefaultHttpFactory";
 
 export function progressHttpFactory(
     progressBrowserXhrFactory: ProgressBrowserXhrFactory,
-    injector: Injector,
+    backend: XHRBackend,
     requestOptions: RequestOptions,
-    http: Http
+    httpFactory: HttpFactory,
+    responseOptions: ResponseOptions,
+    xsrfStrategy: XSRFStrategy
 ): ProgressHttp {
-    return new ProgressHttp(progressBrowserXhrFactory, injector, requestOptions, http);
+    return new ProgressHttp(progressBrowserXhrFactory, backend, requestOptions, httpFactory, responseOptions, xsrfStrategy);
 }
 
 @NgModule({
     providers: [
         ProgressBrowserXhrFactory,
-        {provide: ProgressHttp, useFactory: progressHttpFactory, deps: [ProgressBrowserXhrFactory, Injector, RequestOptions, Http]},
+        { provide: HTTP_FACTORY, useClass: DefaultHttpFactory },
+        {
+            provide: ProgressHttp,
+            useFactory: progressHttpFactory,
+            deps: [ProgressBrowserXhrFactory, XHRBackend, RequestOptions, HTTP_FACTORY, ResponseOptions, XSRFStrategy]},
     ]
 })
 export class ProgressHttpModule {}
