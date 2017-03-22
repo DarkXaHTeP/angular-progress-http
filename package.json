@@ -32,7 +32,8 @@
   "repository": "DarkXaHTeP/angular-progress-http",
   "peerDependencies": {
     "@angular/core": "^2.3.1",
-    "@angular/http": "^2.3.1"
+    "@angular/http": "^2.3.1",
+    "rxjs": "^5.0.1"
   },
   "devDependencies": {
     "@angular/common": "^2.3.1",
