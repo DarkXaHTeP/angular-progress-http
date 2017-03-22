@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Http, RequestOptionsArgs, RequestOptions, ResponseOptions, Request, Response, ConnectionBackend, XHRBackend, XSRFStrategy } from "@angular/http";
+import { Http, RequestOptionsArgs, RequestOptions, Request, Response, ConnectionBackend } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 
 import { HttpWithDownloadProgressListener, HttpWithUploadProgressListener, Progress } from "./interfaces";
-import {ProgressBrowserXhrFactory} from "./ProgressBrowserXhrFactory";
+import { XHRBackendFactory } from "./XHRBackendFactory";
 
 import { HTTP_FACTORY } from "./http-factory.token";
 import { HttpFactory } from "./interfaces";
@@ -15,18 +15,16 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
     private http: Http;
 
     public constructor(
-        private progressBrowserXhrFactory: ProgressBrowserXhrFactory,
+        private xhrBackendFactory: XHRBackendFactory,
         private backend: ConnectionBackend,
         private requestOptions: RequestOptions,
-        private httpFactory: HttpFactory,
-        private responseOptions: ResponseOptions,
-        private xsrfStrategy: XSRFStrategy
+        private httpFactory: HttpFactory
     ) {
         super(null, requestOptions);
         this.http = httpFactory.create(backend, requestOptions);
     }
 
-    request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
+    public request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
         return this.http.request(url, options);
     }
 
@@ -48,12 +46,10 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
 
     private _buildProgressHttpInstance(): ProgressHttp {
         const progressHttp: ProgressHttp = new ProgressHttp(
-            this.progressBrowserXhrFactory,
+            this.xhrBackendFactory,
             this._buildXHRBackend(),
             this.requestOptions,
-            this.httpFactory,
-            this.responseOptions,
-            this.xsrfStrategy);
+            this.httpFactory);
 
         progressHttp._uploadCallback = this._uploadCallback;
         progressHttp._downloadCallback = this._downloadCallback;
@@ -62,8 +58,7 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
     }
 
     private _buildXHRBackend(): ConnectionBackend {
-        const progressBrowserXhr = this.progressBrowserXhrFactory.create(this._uploadCallback, this._downloadCallback);
-        const backend = new XHRBackend(progressBrowserXhr, this.responseOptions, this.xsrfStrategy);
+        const backend = this.xhrBackendFactory.create(this._uploadCallback, this._downloadCallback);
         return backend;
     }
 }
