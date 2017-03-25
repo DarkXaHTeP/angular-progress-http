@@ -1,12 +1,11 @@
 {
-  "name": "aph-examples",
+  "name": "upload-download",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:prod && npm run serve",
-    "build": "ng build",
-    "build:prod": "ng build -prod",
+    "start": "npm run build && npm run serve",
+    "build": "npm run copy-lib && ng build -prod",
     "serve": "node ./server.js",
     "copy-lib": "copyfiles \"../../build/**/*\" node_modules/angular-progress-http -u 3",
     "test": "ng test",
