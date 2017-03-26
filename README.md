@@ -50,6 +50,11 @@ The library is distributed as a set of .ts files, which means that you may need 
 Angular CLI does this compilation automatically.
 
 ## Changelog
+v0.4.0
+* Angular Http can now be replace with custom Http implementation (see [Using custom HTTP implementations](#using-custom-http-implementations))
+* Test environment is set up
+* Examples are now compiled with AOT (Angular CLI app)
+
 v0.3.0
 * Replaced .js files with .ts (resolves [#1](https://github.com/DarkXaHTeP/angular-progress-http/issues/1))
 
@@ -147,6 +152,79 @@ It extends BrowserXhr class with logic that adds event listeners to XMLHttpReque
 Other parts that are responsible for http calls (Http, XhrConnection, XhrBackend) are used as is,
 which means that angular-progress-http will automatically receive fixes and new features from newer versions of angular/http
 
+## Using custom HTTP implementations
+If you want to use custom Http service with progress you need to follow certain steps.
+Let's review them on example of [ng2-adal library](https://www.npmjs.com/package/ng2-adal) - a library for accessing APIs restricted by Azure AD.
+1. create factory class that will implement HttpFactory interface
+```ts
+interface HttpFactory {
+    create<T extends Http>(backend: ConnectionBackend, requestOptions: RequestOptions): T;
+}
+```
+This interface contains single method to create instances of class derived from Http.
+The create method accepts ConnectionBackend and default RequestOptions which are always required for Http to make creation of factory easier.
+
+Let's examine AuthHttp (Http implementation from ng2-adal) constructor to understand what dependencies it has:
+```ts
+constructor(http: Http, adalService: AdalService);
+```
+As you can see, it needs an instance of http service and adalService to work properly.
+With this knowledge we can now create the factory class.
+
+The factory for ng2-adal is quite simple and will look next way:
+```ts
+import { Injectable } from "@angular/core";
+import { ConnectionBackend, RequestOptions } from "@angular/http";
+import { AuthHttp, AdalService } from "ng2-adal/core";
+import { HttpFactory, AngularHttpFactory } from "angular-progress-http";
+
+@Injectable()
+export class AuthHttpFactory implements HttpFactory {
+  constructor(
+    private adalService: AdalService,
+    private angularHttpFactory
+  ) {}
+
+  public create(backend: ConnectionBackend, requestOptions: RequestOptions) {
+    const http = this.angularHttpFactory.create(backend, requestOptions);
+    return new AuthHttp(http, this.adalService);
+  }
+}
+
+```
+
+2. Register created factory as a provider in your application
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { ProgressHttpModule, HTTP_FACTORY } from 'angular-progress-http';
+import { AuthHttpModule } from "ng2-adal/core";
+import { AuthHttpFactory } from "./ng2-adal.http.factory.service";
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    ProgressHttpModule,
+    AuthHttpModule
+  ],
+  providers: [
+    { provide: HTTP_FACTORY, useClass: AuthHttpFactory }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+That's it.
+Now each time when you will call methods of ProgressHttp it will use your custom http implementation internally and add progress listeners to it.
+
+
 ## Building from sources
 1. Clone the repository to the local PC
 2. Run
@@ -161,9 +239,11 @@ Tests are WIP. The instruction will be added after adding tests.
 
 ## Running examples
 1. Make sure that you built library from sources as described [above](#building-from-sources)
+2. Navigate to examples/upload-download folder
 2. Run
 ``` bash
-npm run examples
+npm install
+npm start
 ```
 4. Open browser on http://localhost:3000
 5. Choose some files (big size of the files will let you see the progress bar) and click upload
