@@ -6,7 +6,10 @@ install: npm --production=false install
 script:
 - npm run build
 - npm run test
-- npm run build-examples
+- echo "Building examples project now"
+- cd ./examples/upload-download
+- npm install
+- npm run build
 before_deploy: cd build && pwd
 deploy:
   provider: npm
