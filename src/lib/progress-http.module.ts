@@ -6,7 +6,7 @@ import { XHRBackendFactory } from "./XHRBackendFactory";
 import { ProgressHttp } from "./progress-http.service";
 import { HTTP_FACTORY } from "./http-factory.token";
 import { HttpFactory } from "./interfaces";
-import { DefaultHttpFactory } from "./DefaultHttpFactory";
+import { AngularHttpFactory } from "./AngularHttpFactory";
 
 export function progressHttpFactory(
     xhrBackendFactory: XHRBackendFactory,
@@ -21,7 +21,8 @@ export function progressHttpFactory(
     providers: [
         ProgressBrowserXhrFactory,
         XHRBackendFactory,
-        { provide: HTTP_FACTORY, useClass: DefaultHttpFactory },
+        AngularHttpFactory,
+        { provide: HTTP_FACTORY, useClass: AngularHttpFactory },
         {
             provide: ProgressHttp,
             useFactory: progressHttpFactory,
