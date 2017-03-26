@@ -12,6 +12,7 @@ module.exports = function (config) {
             'test/*.ts'
         ],
         exclude: [
+            "examples/**/*"
         ],
         preprocessors: {
             '**/*.ts': ['webpack']

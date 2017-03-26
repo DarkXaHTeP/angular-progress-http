@@ -12,5 +12,9 @@
       "ES2015",
       "DOM"
     ]
-  }
+  },
+  "exclude": [
+    "examples",
+    "node_modules"
+  ]
 }
