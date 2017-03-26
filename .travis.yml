@@ -10,7 +10,7 @@ script:
 - cd ./examples/upload-download
 - npm install
 - npm run build
-before_deploy: cd build && pwd
+before_deploy: cd ../../build && pwd
 deploy:
   provider: npm
   email: darkxahtep@gmail.com
