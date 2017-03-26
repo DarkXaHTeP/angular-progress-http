@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { Http, RequestOptionsArgs, RequestOptions, Request, Response, ConnectionBackend } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 
@@ -18,7 +18,7 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
         private xhrBackendFactory: XHRBackendFactory,
         private backend: ConnectionBackend,
         private requestOptions: RequestOptions,
-        private httpFactory: HttpFactory
+        @Inject(HTTP_FACTORY) private httpFactory: HttpFactory
     ) {
         super(null, requestOptions);
         this.http = httpFactory.create(backend, requestOptions);
