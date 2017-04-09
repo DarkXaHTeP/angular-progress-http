@@ -47,9 +47,9 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
     private _buildProgressHttpInstance(): ProgressHttp {
         const progressHttp: ProgressHttp = new ProgressHttp(
             this.xhrBackendFactory,
-            this._buildXHRBackend(),
             this.requestOptions,
-            this.httpFactory);
+            this.httpFactory,
+            this._buildXHRBackend());
 
         progressHttp._uploadCallback = this._uploadCallback;
         progressHttp._downloadCallback = this._downloadCallback;
