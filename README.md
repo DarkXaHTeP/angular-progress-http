@@ -50,6 +50,9 @@ The library is distributed as a set of .ts files, which means that you may need 
 Angular CLI does this compilation automatically.
 
 ## Changelog
+v0.4.1
+* TypeScript warning fixed by PR [#4](https://github.com/DarkXaHTeP/angular-progress-http/pull/4)
+
 v0.4.0
 * Angular Http can now be replace with custom Http implementation (see [Using custom HTTP implementations](#using-custom-http-implementations))
 * Test environment is set up
