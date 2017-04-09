@@ -16,9 +16,9 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
 
     public constructor(
         private xhrBackendFactory: XHRBackendFactory,
-        private backend: ConnectionBackend,
         private requestOptions: RequestOptions,
-        @Inject(HTTP_FACTORY) private httpFactory: HttpFactory
+        @Inject(HTTP_FACTORY) private httpFactory: HttpFactory,
+        backend: ConnectionBackend
     ) {
         super(null, requestOptions);
         this.http = httpFactory.create(backend, requestOptions);
