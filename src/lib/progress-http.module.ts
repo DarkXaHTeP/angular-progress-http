@@ -14,7 +14,7 @@ export function progressHttpFactory(
     requestOptions: RequestOptions,
     httpFactory: HttpFactory
 ): ProgressHttp {
-    return new ProgressHttp(xhrBackendFactory, backend, requestOptions, httpFactory);
+    return new ProgressHttp(xhrBackendFactory, requestOptions, httpFactory, backend);
 }
 
 @NgModule({
