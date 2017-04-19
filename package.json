@@ -2,9 +2,10 @@
   "name": "angular-progress-http",
   "version": "0.4.1",
   "description": "A thin wrapper around Http that lets  track progress of http request in Angular 2",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "build": "npm run clean && npm run copy-ts && npm run copy-readme-license && npm run transform-package",
+    "build": "npm run clean && npm run compile-ts && npm run copy-ts && npm run copy-readme-license && npm run transform-package",
+    "compile-ts": "ngc --project=tsconfig.aot.json",
     "clean": "rimraf build/*",
     "test": "karma start --single-run",
     "test:watch": "karma start",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
+    "@angular/compiler-cli": "^2.3.1",
     "@angular/core": "^2.3.1",
     "@angular/http": "^2.3.1",
     "@angular/platform-browser": "^2.3.1",
