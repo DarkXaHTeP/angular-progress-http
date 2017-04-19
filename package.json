@@ -1,6 +1,6 @@
 {
   "name": "angular-progress-http",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "A thin wrapper around Http that lets  track progress of http request in Angular 2",
   "main": "index.js",
   "types": "index.d.ts",

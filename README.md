@@ -46,15 +46,18 @@ export class AppComponent {
     }
 }
 ```
-The library is distributed as a set of .ts files, which means that you may need an appropriate loader to compile TypeScript code into JavaScript.
-Angular CLI does this compilation automatically.
 
 ## Changelog
+v0.5.0
+* JavaScript files are included back into library after removing in 0.3.0
+* *.metadata.json files added to support Angular CLI
+* *.ts files are available from "angular-progress-http/ts" if needed
+
 v0.4.1
 * TypeScript warning fixed by PR [#4](https://github.com/DarkXaHTeP/angular-progress-http/pull/4)
 
 v0.4.0
-* Angular Http can now be replace with custom Http implementation (see [Using custom HTTP implementations](#using-custom-http-implementations))
+* Angular Http can now be replaced with custom Http implementation (see [Using custom HTTP implementations](#using-custom-http-implementations))
 * Test environment is set up
 * Examples are now compiled with AOT (Angular CLI app)
 * Angular 4.x.x allowed as peerDependency
