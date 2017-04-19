@@ -10,10 +10,7 @@
     "test:watch": "karma start",
     "transform-package": "node scripts/transformPackageJson.js",
     "copy-readme-license": "copyfiles README.md LICENSE build",
-    "copy-ts": "copyup \"src/**/*\" build",
-    "build-examples": "webpack --config=./examples/webpack.config",
-    "serve-examples": "node examples/server.js",
-    "examples": "npm run build-examples && npm run serve-examples"
+    "copy-ts": "copyup \"src/**/*\" build/ts"
   },
   "keywords": [
     "angular",
