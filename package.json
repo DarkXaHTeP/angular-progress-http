@@ -3,6 +3,7 @@
   "version": "0.4.1",
   "description": "A thin wrapper around Http that lets  track progress of http request in Angular 2",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "npm run clean && npm run compile-ts && npm run copy-ts && npm run copy-readme-license && npm run transform-package",
     "compile-ts": "ngc --project=tsconfig.aot.json",
