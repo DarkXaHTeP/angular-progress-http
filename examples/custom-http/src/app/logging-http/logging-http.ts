@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Request, Response, ConnectionBackend, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { Observable } from "rxjs";
+import "rxjs/add/operator/do";
 
 @Injectable()
 export class LoggingHttp extends Http {
