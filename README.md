@@ -245,8 +245,12 @@ npm run build
 Tests are WIP. The instruction will be added after adding tests.
 
 ## Running examples
+There are two example projects at the moment
+- basic example of upload progress functionality (examples/upload-download)
+- an example that uses custom http implementation (examples/custom-http)
+
 1. Make sure that you built library from sources as described [above](#building-from-sources)
-2. Navigate to examples/upload-download folder
+2. Navigate to selected example folder
 2. Run
 ``` bash
 npm install
