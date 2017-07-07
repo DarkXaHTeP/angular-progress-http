@@ -1,0 +1,12 @@
+<input type="file" (change)="onFileSelected($event.target.files[0])"/>
+<br/>
+<br/>
+<div *ngIf="fileD" [class.uploaded]="fileD.uploaded">
+  <div>{{fileD.name}}</div>
+  <div *ngIf="fileD.percentage !== null">
+    <div>Uploaded: {{fileD.percentage}}%</div>
+    <div><progress [value]="fileD.percentage" max="100"></progress></div>
+  </div>
+</div>
+<br/>
+<button type="button" (click)="upload()">Upload</button>
