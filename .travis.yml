@@ -6,8 +6,11 @@ install: npm --production=false install
 script:
 - npm run build
 - npm run test
-- echo "Building examples project now"
+- echo "Building examples projects now"
 - cd ./examples/upload-download
+- npm install
+- npm run build
+- cd ../custom-http
 - npm install
 - npm run build
 before_deploy: cd ../../build && pwd
