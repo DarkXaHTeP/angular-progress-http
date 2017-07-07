@@ -48,6 +48,10 @@ export class AppComponent {
 ```
 
 ## Changelog
+v0.5.1
+* [#17](https://github.com/DarkXaHTeP/angular-progress-http/issues/17) fixed
+* Example project with custom http implementation added
+
 v0.5.0
 * JavaScript files are included back into library after removing in 0.3.0
 * *.metadata.json files added to support Angular CLI
