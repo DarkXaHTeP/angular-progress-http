@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Request, Response, ConnectionBackend, RequestOptions, RequestOptionsArgs } from '@angular/http';
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/do";
 
 @Injectable()
