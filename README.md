@@ -189,7 +189,7 @@ import { HttpFactory, AngularHttpFactory } from "angular-progress-http";
 export class AuthHttpFactory implements HttpFactory {
   constructor(
     private adalService: AdalService,
-    private angularHttpFactory
+    private angularHttpFactory: AngularHttpFactory
   ) {}
 
   public create(backend: ConnectionBackend, requestOptions: RequestOptions) {
