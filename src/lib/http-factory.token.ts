@@ -1,3 +1,3 @@
-import { OpaqueToken } from "@angular/core";
+import { InjectionToken } from "@angular/core";
 
-export const HTTP_FACTORY = new OpaqueToken("Http implementation factory");
+export const HTTP_FACTORY = new InjectionToken("Http implementation factory");
