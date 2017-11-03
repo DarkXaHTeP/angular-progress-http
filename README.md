@@ -48,6 +48,11 @@ export class AppComponent {
 ```
 
 ## Changelog
+v0.6.0
+* Switched from OpaqueToken to InjectionToken
+* Dropped support for Angular 2, consider using 0.5.1 if it's needed
+* Added support for Angular 5 for users who didn't migrate to HttpClient yet
+
 v0.5.1
 * [#17](https://github.com/DarkXaHTeP/angular-progress-http/issues/17) fixed
 * Example project with custom http implementation added
