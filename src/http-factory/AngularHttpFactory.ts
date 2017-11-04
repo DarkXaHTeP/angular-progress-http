@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Http, RequestOptions, ConnectionBackend} from "@angular/http";
-import { HttpFactory } from "./interfaces";
+import { HttpFactory } from "../interfaces";
 
 @Injectable()
 export class AngularHttpFactory implements HttpFactory {

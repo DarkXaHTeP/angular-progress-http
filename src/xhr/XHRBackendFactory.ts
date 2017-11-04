@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { XHRBackend, ResponseOptions, XSRFStrategy } from "@angular/http";
 
-import { Progress } from "./interfaces";
+import { Progress } from "../interfaces";
 import { ProgressBrowserXhrFactory } from "./ProgressBrowserXhrFactory";
 
 @Injectable()

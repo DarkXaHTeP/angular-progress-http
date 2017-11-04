@@ -1,6 +1,6 @@
 import {BrowserXhr} from "@angular/http";
 
-import { Progress } from "./interfaces";
+import { Progress } from "../interfaces";
 
 export class ProgressBrowserXhr implements BrowserXhr {
     public constructor(

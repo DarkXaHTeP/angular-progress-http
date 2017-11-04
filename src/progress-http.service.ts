@@ -3,8 +3,8 @@ import { Http, RequestOptionsArgs, RequestOptions, Request, Response, Connection
 import { Observable } from "rxjs/Observable";
 
 import { HttpWithDownloadProgressListener, HttpWithUploadProgressListener, Progress } from "./interfaces";
-import { XHRBackendFactory } from "./XHRBackendFactory";
-import { HTTP_FACTORY } from "./http-factory.token";
+import { XHRBackendFactory } from "./xhr";
+import { HTTP_FACTORY } from "./http-factory";
 import { HttpFactory } from "./interfaces";
 
 @Injectable()

@@ -1,12 +1,10 @@
 import {NgModule } from '@angular/core';
 import { RequestOptions, XHRBackend } from "@angular/http";
 
-import { ProgressBrowserXhrFactory } from "./ProgressBrowserXhrFactory";
-import { XHRBackendFactory } from "./XHRBackendFactory";
+import { ProgressBrowserXhrFactory, XHRBackendFactory } from "./xhr";
 import { ProgressHttp } from "./progress-http.service";
-import { HTTP_FACTORY } from "./http-factory.token";
+import { HTTP_FACTORY, AngularHttpFactory } from "./http-factory";
 import { HttpFactory } from "./interfaces";
-import { AngularHttpFactory } from "./AngularHttpFactory";
 
 export function progressHttpFactory(
     xhrBackendFactory: XHRBackendFactory,
