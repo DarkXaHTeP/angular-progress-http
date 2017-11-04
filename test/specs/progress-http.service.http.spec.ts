@@ -12,7 +12,7 @@ import { HttpModule } from "@angular/http";
 
 import { ProgressHttpModule, ProgressHttp } from "angular-progress-http";
 
-describe("ProgressHttp Service", () => {
+describe("ProgressHttp same as Http", () => {
     let progressHttp;
 
     beforeEach(async(() => {
@@ -33,7 +33,7 @@ describe("ProgressHttp Service", () => {
         xhrMock.teardown();
     });
 
-    it("performs get requests as usual Http", (done) => {
+    it("performs get", (done) => {
         xhrMock.get("/data", (req, res) => {
             res.body(JSON.stringify({
                 field: "value"
@@ -51,7 +51,7 @@ describe("ProgressHttp Service", () => {
             });
     });
 
-    it("performs post requests as usual Http", (done) => {
+    it("performs post", (done) => {
         xhrMock.post("/data", (req, res) => {
             expect(req.header("Content-Type")).toEqual("application/json");
 
