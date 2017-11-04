@@ -1,50 +1,17 @@
 {
-  "name": "angular-progress-http",
-  "version": "0.6.0",
-  "description": "A thin wrapper around Http that lets  track progress of http request in Angular 2",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "private": true,
   "scripts": {
-    "pack": "ng-packagr -p ng-package.json",
-    "build": "npm run clean && npm run compile-ts && npm run copy-ts && npm run copy-readme-license && npm run transform-package",
-    "compile-ts": "ngc --project=tsconfig.aot.json",
-    "clean": "rimraf build/*",
-    "transform-package": "node scripts/transformPackageJson.js",
-    "copy-readme-license": "copyfiles README.md LICENSE build",
-    "copy-ts": "copyup \"src/**/*\" build/ts"
-  },
-  "keywords": [
-    "angular",
-    "angular2",
-    "angular 2",
-    "ng2",
-    "http",
-    "progress",
-    "xhr",
-    "XMLHttpRequest",
-    "ajax",
-    "upload"
-  ],
-  "author": "DarkXaHTeP <darkxahtep@gmail.com>",
-  "license": "MIT",
-  "repository": "DarkXaHTeP/angular-progress-http",
-  "peerDependencies": {
-    "@angular/core": "^4.0.0 || ^5.0.0",
-    "@angular/http": "^4.0.0 || ^5.0.0",
-    "rxjs": "^5.0.1"
+    "build": "ng-packagr -p ng-package.json && npm run copy-readme-license",
+    "copy-readme-license": "copyfiles README.md LICENSE build"
   },
   "devDependencies": {
     "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/http": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "copyfiles": "^1.0.0",
     "ng-packagr": "^1.5.0-rc.1",
-    "rimraf": "^2.5.4",
     "rxjs": "^5.0.1",
-    "typescript": "~2.4.1",
-    "zone.js": "^0.8.18"
+    "zone.js": "^0.8.4"
   }
 }
