@@ -2,10 +2,9 @@ import { Injectable, Inject } from "@angular/core";
 import { Http, RequestOptionsArgs, RequestOptions, Request, Response, ConnectionBackend } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 
-import { HttpWithDownloadProgressListener, HttpWithUploadProgressListener, Progress } from "./interfaces";
-import { XHRBackendFactory } from "./xhr";
-import { HTTP_FACTORY } from "./http-factory";
-import { HttpFactory } from "./interfaces";
+import { HttpWithDownloadProgressListener, HttpWithUploadProgressListener, Progress, HttpFactory } from "./interfaces";
+import { XHRBackendFactory } from "./xhr/XHRBackendFactory";
+import { HTTP_FACTORY } from "./http-factory.token";
 
 @Injectable()
 export class ProgressHttp extends Http implements HttpWithUploadProgressListener, HttpWithDownloadProgressListener {
