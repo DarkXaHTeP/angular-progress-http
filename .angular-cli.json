@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "apps": [
+    {
+      "root": "test",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  }
+}
