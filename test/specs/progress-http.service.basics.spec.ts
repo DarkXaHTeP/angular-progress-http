@@ -31,7 +31,7 @@ describe("ProgressHttp Service", () => {
 
     afterEach(() => {
         xhrMock.teardown();
-    })
+    });
 
     it("performs get requests as usual Http", (done) => {
         xhrMock.get("/data", (req, res) => {
@@ -48,6 +48,26 @@ describe("ProgressHttp Service", () => {
             .subscribe(response => {
                 expect(response.field).toEqual("value");
                 done();
-            })
+            });
     });
+
+    it("performs post requests as usual Http", (done) => {
+        xhrMock.post("/data", (req, res) => {
+            expect(req.header("Content-Type")).toEqual("application/json");
+
+            const body = JSON.parse(req.body());
+            expect(body.field).toEqual("value");
+
+            res.body("reply");
+            return res;
+        });
+
+        progressHttp
+            .post("/data", { field: "value" })
+            .map(response => response.text())
+            .subscribe((response) => {
+                expect(response).toEqual("reply");
+                done();
+            });
+    })
 });
