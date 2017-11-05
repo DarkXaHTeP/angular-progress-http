@@ -16,11 +16,11 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
         private xhrBackendFactory: XHRBackendFactory,
         private requestOptions: RequestOptions,
         @Inject(HTTP_FACTORY)
-        private httpFactory: HttpFactory
+        private httpFactory: HttpFactory,
+        backend: ConnectionBackend
     ) {
         super(null, requestOptions);
-        const xhrBackend = this._buildXHRBackend();
-        this.http = httpFactory.create(xhrBackend, requestOptions);
+        this.http = httpFactory.create(backend, requestOptions);
     }
 
     public request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
@@ -47,7 +47,8 @@ export class ProgressHttp extends Http implements HttpWithUploadProgressListener
         const progressHttp: ProgressHttp = new ProgressHttp(
             this.xhrBackendFactory,
             this.requestOptions,
-            this.httpFactory);
+            this.httpFactory,
+            this._buildXHRBackend());
 
         progressHttp._uploadCallback = this._uploadCallback;
         progressHttp._downloadCallback = this._downloadCallback;

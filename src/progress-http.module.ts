@@ -1,5 +1,5 @@
 import {NgModule } from '@angular/core';
-import { RequestOptions } from "@angular/http";
+import { RequestOptions, XHRBackend } from "@angular/http";
 
 import { HttpFactory } from "./interfaces";
 import { ProgressBrowserXhrFactory } from "./xhr/ProgressBrowserXhrFactory";
@@ -13,7 +13,8 @@ export function progressHttpFactory(
     requestOptions: RequestOptions,
     httpFactory: HttpFactory
 ): ProgressHttp {
-    return new ProgressHttp(xhrBackendFactory, requestOptions, httpFactory);
+    const backend = xhrBackendFactory.create(null, null);
+    return new ProgressHttp(xhrBackendFactory, requestOptions, httpFactory, backend);
 }
 
 @NgModule({
