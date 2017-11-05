@@ -29,7 +29,6 @@ describe("ProgressHttp", () => {
         progressHttp = testBed.get(ProgressHttp);
 
         xhrMock.post("/data", (req, res) => {
-            //res.header("Content-Length", "5");
             res.body("reply");
             return res;
         })
@@ -47,7 +46,34 @@ describe("ProgressHttp", () => {
             .post("/data", { field: "value" })
             .subscribe(() => {
                 expect(uploadProgressListener).toHaveBeenCalled();
-                done()
+                done();
             });
-    })
+    });
+
+    it("calls download progress listener", (done) => {
+        const downloadProgressListener = jasmine.createSpy("downloadProgress");
+
+        progressHttp
+            .withDownloadProgressListener(downloadProgressListener)
+            .post("/data", { field: "value" })
+            .subscribe(() => {
+                expect(downloadProgressListener).toHaveBeenCalled();
+                done();
+            });
+    });
+
+    it("calls both progress listeners", (done) => {
+        const uploadProgressListener = jasmine.createSpy("uploadProgress");
+        const downloadProgressListener = jasmine.createSpy("downloadProgress");
+
+        progressHttp
+            .withUploadProgressListener(uploadProgressListener)
+            .withDownloadProgressListener(downloadProgressListener)
+            .post("/data", { field: "value" })
+            .subscribe(() => {
+                expect(uploadProgressListener).toHaveBeenCalled();
+                expect(downloadProgressListener).toHaveBeenCalled();
+                done();
+            });
+    });
 });
