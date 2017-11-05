@@ -17,6 +17,7 @@ script:
 - cd ../custom-http
 - npm install
 - npm run build
+after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 before_deploy: cd ../../build && pwd
 deploy:
   provider: npm
