@@ -11,14 +11,16 @@ script:
 - npm run build
 - npm run test
 - echo "Building examples projects now"
-- cd ./examples/upload-download
+- cd $TRAVIS_BUILD_DIR/examples/upload-download
 - npm install
 - npm run build
-- cd ../custom-http
+- cd $TRAVIS_BUILD_DIR/examples/custom-http
 - npm install
 - npm run build
-after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-before_deploy: cd ../../build && pwd
+after_script:
+- cd $TRAVIS_BUILD_DIR && pwd
+- npm install coveralls@2 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+before_deploy: cd $TRAVIS_BUILD_DIR/build && pwd
 deploy:
   provider: npm
   email: darkxahtep@gmail.com
