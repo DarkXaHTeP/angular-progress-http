@@ -5,8 +5,8 @@ import { Progress } from "../interfaces";
 export class ProgressBrowserXhr implements BrowserXhr {
     public constructor(
         private browserXhr: BrowserXhr,
-        private upload:any = null,
-        private download:any = null) {
+        private upload:any,
+        private download:any) {
     }
 
     public build():any {
