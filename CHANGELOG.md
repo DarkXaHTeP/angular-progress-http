@@ -21,7 +21,7 @@
 
 ###v0.4.0
 
-* Angular Http can now be replaced with custom Http implementation (see [Using custom HTTP implementations](readme.md#using-custom-http-implementations))
+* Angular Http can now be replaced with custom Http implementation (see [Using custom HTTP implementations](https://github.com/DarkXaHTeP/angular-progress-http/blob/master/README.md#using-custom-http-implementations))
 * Test environment is set up
 * Examples are now compiled with AOT (Angular CLI app)
 * Angular 4.x.x allowed as peerDependency
