@@ -46,11 +46,10 @@ describe("ProgressHttp with custom Http Factory", () => {
 
             beforeEach(() => {
                 progressHttp = testBed.get(ProgressHttp);
+                spyOn(CustomHttpFactory.prototype, "create").and.callThrough();
             });
 
             it("is added to upload", () => {
-                spyOn(CustomHttpFactory.prototype, "create").and.callThrough();
-
                 progressHttp
                     .withUploadProgressListener(() => {
                     });
@@ -59,8 +58,6 @@ describe("ProgressHttp with custom Http Factory", () => {
             });
 
             it("is added to download", () => {
-                spyOn(CustomHttpFactory.prototype, "create").and.callThrough();
-
                 progressHttp
                     .withDownloadProgressListener(() => {
                     });
@@ -69,8 +66,6 @@ describe("ProgressHttp with custom Http Factory", () => {
             });
 
             it("is added to both", () => {
-                spyOn(CustomHttpFactory.prototype, "create").and.callThrough();
-
                 progressHttp
                     .withUploadProgressListener(() => {
                     })
