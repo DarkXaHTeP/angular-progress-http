@@ -252,7 +252,12 @@ npm run build
 3. The built library can be found in "build" folder
 
 ## Running tests
-Tests are WIP. The instruction will be added after adding tests.
+1. Clone the repository to the local PC
+2. Run
+``` bash
+npm install
+npm test
+```
 
 ## Running examples
 There are two example projects at the moment
