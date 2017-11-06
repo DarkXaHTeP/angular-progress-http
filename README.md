@@ -53,7 +53,7 @@ export class AppComponent {
 * Angular 2 is supported in v0.5.1. Use command `npm install angular-progress-http@0.5.1` to get it
 
 ## Releases
-For release notes please see [CHANGELOG.md](CHANGELOG.md)
+For release notes please see [CHANGELOG.md](https://github.com/DarkXaHTeP/angular-progress-http/blob/master/CHANGELOG.md)
 
 ## API description
 
