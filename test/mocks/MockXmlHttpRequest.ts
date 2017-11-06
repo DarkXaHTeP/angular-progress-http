@@ -3,8 +3,6 @@ export class MockXmlHttpRequest {
     public upload: MockXmlHttpRequest;
 
     public addEventListener(name: string, listener: (event: ProgressEvent) => void) {
-        if (name === "progress") {
-            this.listener = listener;
-        }
+        this.listener = listener;
     }
 }
