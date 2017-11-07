@@ -4,7 +4,7 @@
     "build": "ng-packagr -p ng-package.json && npm run copy-readme-license",
     "test": "karma start --single-run",
     "test:watch": "karma start",
-    "copy-readme-license": "copyfiles README.md LICENSE build"
+    "copy-readme-license": "copyfiles README.md CHANGELOG.md LICENSE build"
   },
   "devDependencies": {
     "@angular/cli": "1.5.0",
