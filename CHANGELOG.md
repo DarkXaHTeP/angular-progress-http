@@ -1,3 +1,10 @@
+###v1.0.0
+
+* First stable release
+* Started using [ng-packagr](https://github.com/dherges/ng-packagr) and [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview)
+* Added support for SystemJS
+* Added unit tests and test coverage information
+
 ###v0.6.0
 
 * Switched from OpaqueToken to InjectionToken
