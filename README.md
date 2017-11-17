@@ -247,4 +247,4 @@ Feel free to ask questions and post bugs/ideas in the issues, as well as send pu
 
 [npm-image]: https://img.shields.io/npm/v/angular-progress-http.svg
 [npm-url]: https://npmjs.org/package/angular-progress-http
-[downloads-image]: https://img.shields.io/npm/dm/angular-progress-http.svg
+[downloads-image]: https://img.shields.io/npm/dt/angular-progress-http.svg
