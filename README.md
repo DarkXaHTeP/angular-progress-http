@@ -243,7 +243,7 @@ npm start
 ## Сontribution
 Feel free to ask questions and post bugs/ideas in the issues, as well as send pull requests.
 
-### License: [MIT](LICENSE)
+[![License](https://img.shields.io/github/license/darkxahtep/angular-progress-http.svg)](https://github.com/DarkXaHTeP/angular-progress-http/blob/master/LICENSE)
 
 [npm-image]: https://img.shields.io/npm/v/angular-progress-http.svg
 [npm-url]: https://npmjs.org/package/angular-progress-http
